@@ -158,6 +158,7 @@ LOGOUT_REDIRECT_URL = "home"  # change to desired url name
 ACCOUNT_SESSION_REMEMBER = True  # remember user via sessions
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False  # preferred UX
 ACCOUNT_USERNAME_REQUIRED = False  # preferred UX
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True  # required for email authentication
 ACCOUNT_UNIQUE_EMAIL = True  # required for email authentication
