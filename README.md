@@ -1,8 +1,8 @@
-# Django 4 boilerplate
+# Django Keyhome
 
-Boilerplate django project for hobby projects
+Keyhome is a basic application to keep track of keys for holiday homes
 
-This is a boilerplate project for setting up quickly, its to my own preferences using
+i used my own boilerplate using
 Django,
 Postgres,
 Django All Auth
