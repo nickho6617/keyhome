@@ -1,0 +1,27 @@
+{% extends "_base.html" %}
+{% load i18n %}
+
+{% block content %}
+{% for property in ownedproperty_list %}
+
+<div class="card">
+    <div class="card-header">
+        <span class="font-weight-bold">Property</span>
+        <a href="{% url 'assets:property_update' property.pk %}">Edit</a> | <a
+            href="{% url 'assets:property_delete' property.pk %}">Delete</a>
+    </div>
+    <div class="card-body">
+        <a href="{% url 'assets:property_detail' property.pk %}">{{ property.legal_name}}</a>
+        <a href="{% url 'assets:property_new' %}">New Structure</a>
+        <ul>
+            {% for structure in property.structure_set.all %}
+            <li>{{structure.name}} - {{structure.structure_type}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<br />
+{% endfor %}
+
+
+{% endblock content %}

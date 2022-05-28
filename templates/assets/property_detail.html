@@ -1,0 +1,14 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<div>
+    <h3>{{object.legal_name}}</h3> <br>
+    <a href="{% url 'assets:structure_new' %}">New Structure</a> <br>
+    {% for structure in object.structures.all %}
+    <li><a href="{% url 'assets:structure_detail' structure.pk %}">{{structure.name}} </a> -
+        {{structure.structure_type}}</li>
+    {% endfor %}
+    <p><a href="{% url 'assets:property_list' %}">Go back to Property List</a> </p>
+</div>
+
+{% endblock content %}

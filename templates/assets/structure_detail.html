@@ -1,0 +1,28 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<p>Name: {{structure.name}}</p>
+<p>Structure: {{structure.description}}</p>
+<p>Type: {{structure.structure_type}}</p>
+<p>Property: {{structure.owned_property}}</p><br>
+<a href="{% url 'assets:locks_new' %}">New lock</a>
+<hr>
+
+<div class="container-fluid">
+    <div class="row">
+        {% for locks in structure.locks.all %}
+        <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{locks.key_image.url}}" alt={{locks.lock_type}}>
+                <div class="card-body">
+                    <h5 class="card-title">{{locks.room}}</h5>
+                    <p class="card-text">{{locks.description}} | {{locks.lock_type}}.</p>
+                    <a href="#" class="btn btn-primary">Edit Lock</a>
+                </div>
+            </div>
+        </div>{% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}

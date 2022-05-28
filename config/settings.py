@@ -25,9 +25,10 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "asognsaoknfksagfa")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get("DEBUG", default=0))
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", ["localhost 127.0.0.1"]).split(
-    " "
-)
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "10.0.0.103"]
+# os.environ.get(
+#     "DJANGO_ALLOWED_HOSTS", ["localhost 127.0.0.1 192.168.43.225"]
+# ).split(" ")
 
 # Set to use custom user
 AUTH_USER_MODEL = "users.CustomUser"
@@ -49,8 +50,10 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "debug_toolbar",
+    "django_extensions",
     # Local
     "accounts",
+    "assets",
     "pages",
 ]
 
@@ -185,3 +188,25 @@ import socket
 
 hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
 INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
+            "propagate": False,
+        },
+    },
+}

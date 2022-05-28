@@ -3,5 +3,19 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-<h1>Homepage</h1>
+<h1>Keyhome Homepage</h1>
+<p>This web app holds the information about keys in your properties, you may take an image and store meta data about it
+    should a key get lost you know what to get from the locksmith.
+</p>
+{% if user.is_authenticated %}
+<a href="{% url 'assets:property_list' %}">Your properties</a>
+<ul>
+    {% for property in ownedproperty_list %}
+    <li>{{property}}</li>
+
+    {%endfor%}
+</ul>
+{% else %}
+<p>When you sign up / in your properties will be listed here.</p>
+{% endif %}
 {% endblock content %}
